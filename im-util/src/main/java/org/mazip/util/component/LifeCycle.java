@@ -55,6 +55,9 @@ public interface LifeCycle {
      */
     public boolean isStopped();
 
+    public boolean isSuspend();
+
+    public boolean isResume();
 
     /**
      * 是否启动失败
@@ -66,41 +69,15 @@ public interface LifeCycle {
      *
      * @param listener
      */
-    public void addLifeCycleListener(LifeCycle.Listener listener);
+    public void addLifeCycleListener(LifeCycleListener listener);
 
     /**
      * 移除监听
      *
      * @param listener
      */
-    public void removeLifeCycleListener(LifeCycle.Listener listener);
+    public void removeLifeCycleListener(LifeCycleListener listener);
     
 
-    /* ------------------------------------------------------------ */
 
-    /**
-     * Listener.
-     * A listener for Lifecycle events.
-     */
-    public interface Listener extends EventListener {
-
-
-        //初始化
-        public void lifeCycleInitialize(LifeCycle event);
-
-        //启动
-        public void lifeCycleStarted(LifeCycle event);
-
-        //阻塞
-        public void lifyCycleSuspend(LifeCycle event);
-
-        //恢复
-        public void lifyCycleResume(LifeCycle event);
-
-        //启动失败
-        public void lifeCycleFailure(LifeCycle event, Throwable cause);
-
-        //组件停止
-        public void lifeCycleStopped(LifeCycle event);
-    }
 }

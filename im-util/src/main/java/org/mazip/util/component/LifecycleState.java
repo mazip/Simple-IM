@@ -5,21 +5,23 @@ package org.mazip.util.component;
  * 生命周期的几种状态
  * NEW 初始化 启动 运行中 中断 恢复 停止
  */
-public enum  LifecycleState {
+public enum LifeCycleState {
 
     NEW,
 
     INITIALIZE,
 
-    START,
+    STARTTING,
 
-    RUNNING,
+    STARTED,
 
     SUSPEND,
 
     RESUME,
 
-    STOP,
+    STOPPING,
+
+    STOPPED,
 
     FAILED
 
