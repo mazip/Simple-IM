@@ -50,6 +50,19 @@ public abstract class AbstractLifeCycle implements LifeCycle {
     }
 
 
+
+    protected void doSuspend() throws Exception{
+
+    }
+
+    /**
+     * 组件恢复
+     * @throws Exception
+     */
+    protected void doResume() throws Exception{
+
+    }
+
     /**
      * 启动的方法
      * @throws Exception
@@ -85,6 +98,34 @@ public abstract class AbstractLifeCycle implements LifeCycle {
             } catch (Throwable e) {
                 setFailed(e);
 
+            }
+        }
+    }
+
+    public final void suspend() throws Exception {
+        synchronized (_lock) {
+            try {
+                //判断是否是正在关闭的状态
+                if (_state == __SUSPEND)
+                    return;
+                setSuspend();
+                doSuspend();
+            } catch (Throwable e) {
+                setFailed(e);
+            }
+        }
+    }
+
+    public final void resume() throws Exception {
+        synchronized (_lock) {
+            try {
+                //判断是否是正在关闭的状态
+                if (_state == __RESUME)
+                    return;
+                setResume();
+                doResume();
+            } catch (Throwable e) {
+                setFailed(e);
             }
         }
     }
@@ -144,7 +185,7 @@ public abstract class AbstractLifeCycle implements LifeCycle {
             case __INITIALIZE:
                 return LifeCycleState.INITIALIZE;
             case __STARTING:
-                return LifeCycleState.STARTTING;
+                return LifeCycleState.STARTING;
             case __STARTED:
                 return LifeCycleState.STARTED;
             case __STOPPING:
@@ -160,7 +201,7 @@ public abstract class AbstractLifeCycle implements LifeCycle {
     }
 
     public static LifeCycleState getState(LifeCycle lc) {
-        if (lc.isStarting()) return LifeCycleState.STARTTING;
+        if (lc.isStarting()) return LifeCycleState.STARTING;
         if (lc.isStarted()) return LifeCycleState.STARTED;
         if (lc.isStopping()) return LifeCycleState.STOPPING;
         if (lc.isStopped()) return LifeCycleState.STOPPED;
@@ -191,6 +232,18 @@ public abstract class AbstractLifeCycle implements LifeCycle {
         _state = __STOPPED;
         for (LifeCycleListener listener : _listeners)
             listener.lifeCycleStopped(this);
+    }
+
+    private void setSuspend(){
+        _state = __SUSPEND;
+        for (LifeCycleListener listener : _listeners)
+            listener.lifyCycleSuspend(this);
+    }
+
+    private void setResume(){
+        _state = __RESUME;
+        for (LifeCycleListener listener : _listeners)
+            listener.lifyCycleResume(this);
     }
 
     private void setFailed(Throwable th) {

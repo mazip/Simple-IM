@@ -11,7 +11,7 @@ public enum LifeCycleState {
 
     INITIALIZE,
 
-    STARTTING,
+    STARTING,
 
     STARTED,
 
