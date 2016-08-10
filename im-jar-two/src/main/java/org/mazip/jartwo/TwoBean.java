@@ -1,6 +1,7 @@
 package org.mazip.jartwo;
 
 import org.mazip.util.component.LifeCycle;
+import org.mazip.util.component.LifeCycleListener;
 
 
 /**
@@ -18,6 +19,16 @@ public class TwoBean implements LifeCycle {
     }
 
     public void stop() throws Exception {
+
+    }
+
+    @Override
+    public void suspend() throws Exception {
+
+    }
+
+    @Override
+    public void resume() throws Exception {
 
     }
 
@@ -41,15 +52,29 @@ public class TwoBean implements LifeCycle {
         return false;
     }
 
+    @Override
+    public boolean isSuspend() {
+        return false;
+    }
+
+    @Override
+    public boolean isResume() {
+        return false;
+    }
+
     public boolean isFailed() {
         return false;
     }
 
-    public void addLifeCycleListener(Listener listener) {
+    @Override
+    public void addLifeCycleListener(LifeCycleListener listener) {
 
     }
 
-    public void removeLifeCycleListener(Listener listener) {
+    @Override
+    public void removeLifeCycleListener(LifeCycleListener listener) {
 
     }
+
+
 }

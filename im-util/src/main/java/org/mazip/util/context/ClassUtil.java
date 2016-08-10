@@ -105,15 +105,14 @@ public class ClassUtil {
 
     /**
      * 从jar文件中读取class
-     * @param jarPaht
-     * @param filePaht
+     * @param jarPath
      * @return
      */
-    public List<Class> getClasssFromJarFile(String jarPaht, String filePaht) {
+    public List<Class> getClasssFromJarFile(String jarPath) {
         List<Class> clazzs = new ArrayList<Class>();
         JarFile jarFile = null;
         try {
-            jarFile = new JarFile(jarPaht);
+            jarFile = new JarFile(jarPath);
         } catch (IOException e1) {
             // TODO: 2016/8/10 处理异常
             e1.printStackTrace();
@@ -122,7 +121,7 @@ public class ClassUtil {
         Enumeration<JarEntry> ee = jarFile.entries();
         while (ee.hasMoreElements()) {
             JarEntry entry = (JarEntry) ee.nextElement();
-            if (entry.getName().startsWith(filePaht) && entry.getName().endsWith(".class")) {
+            if (entry.getName().endsWith(".class")) {
                 jarEntryList.add(entry);
             }
         }
@@ -130,7 +129,7 @@ public class ClassUtil {
             String className = entry.getName().replace('/', '.');
             className = className.substring(0, className.length() - 6);
             try {
-                clazzs.add(Thread.currentThread().getContextClassLoader().loadClass(className));
+                clazzs.add(getDefaultClassLoader().loadClass(className));
             } catch (ClassNotFoundException e) {
                 // TODO: 2016/8/10 处理异常
                 e.printStackTrace();
