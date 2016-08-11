@@ -34,6 +34,10 @@ public abstract class AbstractLifeCycle implements LifeCycle {
     private volatile int _state = __STOPPED;
     private long _stopTimeout = 30000;
 
+
+    protected void doInit() throws Exception{
+
+    }
     /**
      * 留给子类实现
      * 启动的方法
@@ -61,6 +65,24 @@ public abstract class AbstractLifeCycle implements LifeCycle {
      */
     protected void doResume() throws Exception{
 
+    }
+
+    /**
+     * 启动的方法
+     * @throws Exception
+     */
+    public final void init() throws Exception {
+        synchronized (_lock) {
+            try {
+                //判断状态 如果是运行状态就直接返回
+                if (_state == __INITIALIZE)
+                    return;
+                setInit();
+                doInit();
+            } catch (Throwable e) {
+                setFailed(e);
+            }
+        }
     }
 
     /**
@@ -208,6 +230,12 @@ public abstract class AbstractLifeCycle implements LifeCycle {
         if(lc.isSuspend()) return LifeCycleState.SUSPEND;
         if(lc.isResume()) return LifeCycleState.RESUME;
         return LifeCycleState.FAILED;
+    }
+
+    private void setInit(){
+        _state = __INITIALIZE;
+        for (LifeCycleListener listener : _listeners)
+            listener.lifeCycleInitialize(this);
     }
 
     private void setStarted() {

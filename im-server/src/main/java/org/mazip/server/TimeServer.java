@@ -14,6 +14,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  */
 public class TimeServer {
 
+    // handler 类似servlet  pipline 类似 filter
     public void bind(int port){
 
         EventLoopGroup workerGroup = new NioEventLoopGroup();

@@ -10,6 +10,8 @@ import java.util.EventListener;
  */
 
 public interface LifeCycle {
+
+    public void init() throws Exception;
     /**
      * 组件启动
      */
