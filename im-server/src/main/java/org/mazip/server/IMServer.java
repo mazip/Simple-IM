@@ -10,6 +10,10 @@ import org.mazip.util.server.IServer;
 @SimpleServer
 public class IMServer extends AbstractLifeCycle implements IServer {
 
+    /**
+     * 初始化
+     * @throws Exception
+     */
     @Override
     protected void doInit() throws Exception {
 
