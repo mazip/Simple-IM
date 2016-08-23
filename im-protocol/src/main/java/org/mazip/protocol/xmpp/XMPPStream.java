@@ -1,5 +1,8 @@
 package org.mazip.protocol.xmpp;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 /**
  * Created by mazip on 2016/8/23.
  * XML流
@@ -37,11 +40,14 @@ package org.mazip.protocol.xmpp;
  */
 public class XMPPStream {
 
+    public static final  String  START_TAG="stream:stream";
     public static final  String  FROM_ATTR = "from";
     public static final  String  TO_ATTR = "to";
     public static final  String  ID_ATTR ="id";
     public static final  String  LANG_ATTR="xml:lang";
     public static final  String  VERSION_ATTR ="version";
+    public static final  String  XMLNS_ATTR="xmlns";
+    public static final  String  XMLNSSTREAM_ATTR="xmlns:stream";
 
 
     private String from;
@@ -49,6 +55,24 @@ public class XMPPStream {
     private String id;
     private String lang;
     private String version;
+    private String xmlns;
+    private String xmlnsStream;
+
+    public String getXmlnsStream() {
+        return xmlnsStream;
+    }
+
+    public void setXmlnsStream(String xmlnsStream) {
+        this.xmlnsStream = xmlnsStream;
+    }
+
+    public String getXmlns() {
+        return xmlns;
+    }
+
+    public void setXmlns(String xmlns) {
+        this.xmlns = xmlns;
+    }
 
     public String getFrom() {
         return from;
@@ -88,5 +112,23 @@ public class XMPPStream {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public static void main(String[] args) throws IllegalAccessException {
+        Class c = XMPPStream.class;
+        Field[] fields = c.getDeclaredFields();
+        for (int i=0;i<fields.length;i++){
+            if(Modifier.isPublic(fields[i].getModifiers())){
+                if("START_TAG".equals(fields[i].getName())){
+                    System.out.println(fields[i].get(c).toString());
+                    continue;
+                }
+            }
+
+            if("private".equals(Modifier.toString(fields[i].getModifiers()))){
+                System.out.println(fields[i].getName());
+            }
+
+        }
     }
 }

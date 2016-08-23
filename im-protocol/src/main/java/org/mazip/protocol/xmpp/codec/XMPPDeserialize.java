@@ -75,6 +75,8 @@ public class XMPPDeserialize {
         xmppStream.setId(xmlPullParser.getAttributeValue(null,XMPPStream.ID_ATTR));
         xmppStream.setLang(xmlPullParser.getAttributeValue(null,XMPPStream.LANG_ATTR));
         xmppStream.setVersion(xmlPullParser.getAttributeValue(null,XMPPStream.VERSION_ATTR));
+        xmppStream.setXmlns(xmlPullParser.getAttributeValue(null,XMPPStream.XMLNS_ATTR));
+        xmppStream.setXmlnsStream(xmlPullParser.getAttributeValue(null,XMPPStream.XMLNSSTREAM_ATTR));
         return xmppStream;
     }
 }

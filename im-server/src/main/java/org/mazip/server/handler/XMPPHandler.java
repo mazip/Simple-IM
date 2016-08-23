@@ -4,6 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import org.mazip.protocol.xmpp.XMPPStream;
+import org.mazip.protocol.xmpp.codec.XMPPDeserialize;
 
 import java.util.Date;
 
@@ -19,6 +21,10 @@ public class XMPPHandler extends ChannelHandlerAdapter {
         byteBuf.readBytes(req);
         String body=new String(req,"UTF-8");
         System.out.println(body);
+        Object t = XMPPDeserialize.desrialize(body);
+        if(t instanceof XMPPStream){
+
+        }
 //        String currentTime ="query time order".equalsIgnoreCase(body)?new Date(System.currentTimeMillis()).toString():"bad order";
 //
 //        ByteBuf buf = Unpooled.copiedBuffer(currentTime.getBytes());
