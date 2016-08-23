@@ -39,12 +39,13 @@ public class XMPPSerialize {
                     fields[i].setAccessible(true);
                     if("id".equals(fields[i].getName())){
                         if(fields[i].get(t)==null){
-                            serializer.attribute(null,fields[i].getName(), UUID.randomUUID().toString());
+
+                            serializer.attribute(null,cls.getField(fields[i].getName().toUpperCase()+"_ATTR").get(t).toString(), UUID.randomUUID().toString());
                         }else{
-                            serializer.attribute(null,fields[i].getName(), fields[i].get(t).toString());
+                            serializer.attribute(null,cls.getField(fields[i].getName().toUpperCase()+"_ATTR").get(t).toString(), fields[i].get(t).toString());
                         }
                     }else{
-                        serializer.attribute(null,fields[i].getName(),fields[i].get(t).toString());
+                        serializer.attribute(null,cls.getField(fields[i].getName().toUpperCase()+"_ATTR").get(t).toString(),fields[i].get(t).toString());
                     }
                 }
             }
@@ -58,6 +59,8 @@ public class XMPPSerialize {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
 

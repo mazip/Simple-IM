@@ -29,12 +29,12 @@ import java.lang.reflect.Modifier;
  *    流的XML命名空间 ( 4.8 )
  *    和XML流相关的错误处理 ( 4.9 )
  *    +----------+--------------------------+-------------------------+
- *    |          |    初始实体 到 接收实体     |    接收实体 到 初始实体    |
+ *    |          |    初始实体 到 接收实体    |    接收实体 到 初始实体   |
  *    +----------+--------------------------+-------------------------+
  *    | to       | 接收实体JID               | 初始实体JID              |
  *    | from     | 初始实体JID               | 接收实体JID              |
- *    | id       | 忽  略                       | 流标识                     |
- *    | xml:lang | 默认语言                     | 默认语言                   |
+ *    | id       | 忽  略                    | 流标识                  |
+ *    | xml:lang | 默认语言                  | 默认语言                 |
  *    | version  | XMPP 1.0+ supported      | XMPP 1.0+ supported     |
  *    +----------+--------------------------+-------------------------+
  */
@@ -114,21 +114,21 @@ public class XMPPStream {
         this.version = version;
     }
 
-    public static void main(String[] args) throws IllegalAccessException {
-        Class c = XMPPStream.class;
-        Field[] fields = c.getDeclaredFields();
-        for (int i=0;i<fields.length;i++){
-            if(Modifier.isPublic(fields[i].getModifiers())){
-                if("START_TAG".equals(fields[i].getName())){
-                    System.out.println(fields[i].get(c).toString());
-                    continue;
-                }
-            }
-
-            if("private".equals(Modifier.toString(fields[i].getModifiers()))){
-                System.out.println(fields[i].getName());
-            }
-
-        }
-    }
+//    public static void main(String[] args) throws IllegalAccessException {
+//        Class c = XMPPStream.class;
+//        Field[] fields = c.getDeclaredFields();
+//        for (int i=0;i<fields.length;i++){
+//            if(Modifier.isPublic(fields[i].getModifiers())){
+//                if("START_TAG".equals(fields[i].getName())){
+//                    System.out.println(fields[i].get(c).toString());
+//                    continue;
+//                }
+//            }
+//
+//            if("private".equals(Modifier.toString(fields[i].getModifiers()))){
+//                System.out.println(fields[i].getName());
+//            }
+//
+//        }
+//    }
 }
