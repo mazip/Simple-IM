@@ -6,26 +6,26 @@ package org.mazip.protocol.xmpp;
 public class Packet {
 
     /** Field description */
-    public static final String CLIENT_XMLNS = "jabber:client";
+    public static final String CLIENTXMLNS_ATTR = "jabber:client";
 
     /** Field description */
-    public static final String FROM_ATT = "from";
+    public static final String FROM_ATTR = "from";
 
     /** Field description */
-    public static final String ID_ATT = "id";
+    public static final String ID_ATTR = "id";
 
     /** Field description */
-    public static final String PERM_ATT = "perm";
+    public static final String PERM_ATTR = "perm";
 
     /** Field description */
-    public static final String PRIORITY_ATT = "pr";
+    public static final String PRIORITY_ATTR = "pr";
 
     /** Field description */
-    public static final String TO_ATT = "to";
+    public static final String TO_ATTR = "to";
 
     /** Field description */
-    public static final String TYPE_ATT = "type";
+    public static final String TYPE_ATTR = "type";
 
     /** Field description */
-    public static final String XMLNS_ATT = "xmlns";
+    public static final String XMLNS_ATTR = "xmlns";
 }
