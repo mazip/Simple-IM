@@ -17,11 +17,12 @@
 
 package org.mazip.protocol.xmpp.stanza;
 
-import org.jivesoftware.smack.util.TypedCloneable;
-import org.jivesoftware.smack.util.XmlStringBuilder;
 import org.jxmpp.jid.Jid;
 import org.jxmpp.jid.impl.JidCreate;
 import org.jxmpp.stringprep.XmppStringprepException;
+import org.mazip.protocol.xmpp.Stanza;
+import org.mazip.protocol.xmpp.util.TypedCloneable;
+import org.mazip.protocol.xmpp.util.XmlStringBuilder;
 
 import java.util.*;
 
@@ -128,7 +129,6 @@ public final class Message extends Stanza implements TypedCloneable<Message> {
 
     /**
      * Returns the type of the message. If no type has been set this method will return {@link
-     * org.jivesoftware.smack.packet.Message.Type#normal}.
      *
      * @return the type of the message.
      */
@@ -214,7 +214,6 @@ public final class Message extends Stanza implements TypedCloneable<Message> {
      *
      * @param language the language of the subject being added.
      * @param subject the subject being added to the message.
-     * @return the new {@link org.jivesoftware.smack.packet.Message.Subject}
      * @throws NullPointerException if the subject is null, a null pointer exception is thrown
      */
     public Subject addSubject(String language, String subject) {
@@ -333,7 +332,6 @@ public final class Message extends Stanza implements TypedCloneable<Message> {
      *
      * @param language the language of the body being added.
      * @param body the body being added to the message.
-     * @return the new {@link org.jivesoftware.smack.packet.Message.Body}
      * @throws NullPointerException if the body is null, a null pointer exception is thrown
      * @since 3.0.2
      */

@@ -17,11 +17,12 @@
 
 package org.mazip.protocol.xmpp.stanza;
 
-import org.jivesoftware.smack.packet.id.StanzaIdUtil;
-import org.jivesoftware.smack.util.Objects;
-import org.jivesoftware.smack.util.StringUtils;
-import org.jivesoftware.smack.util.TypedCloneable;
-import org.jivesoftware.smack.util.XmlStringBuilder;
+import org.mazip.protocol.xmpp.Stanza;
+import org.mazip.protocol.xmpp.StanzaIdUtil;
+import org.mazip.protocol.xmpp.util.Objects;
+import org.mazip.protocol.xmpp.util.StringUtils;
+import org.mazip.protocol.xmpp.util.TypedCloneable;
+import org.mazip.protocol.xmpp.util.XmlStringBuilder;
 
 import java.util.Locale;
 

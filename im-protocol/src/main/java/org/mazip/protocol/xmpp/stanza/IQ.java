@@ -18,7 +18,8 @@
 package org.mazip.protocol.xmpp.stanza;
 
 
-import org.mazip.protocol.xmpp.Stanza;
+import org.mazip.protocol.xmpp.*;
+import org.mazip.protocol.xmpp.util.Objects;
 import org.mazip.protocol.xmpp.util.XmlStringBuilder;
 
 import java.util.Locale;
