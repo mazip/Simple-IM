@@ -33,10 +33,10 @@ public class XMPPSerializeTest {
         Query query = new Query();
         query.setXmlns("jabber:iq:auth");
         Map<String,String> map = new HashMap<String,String>();
-        map.put("username","username");
-        map.put("password","password");
-        map.put("digest","digest");
-        map.put("resource","resource");
+        map.put("username",null);
+        map.put("password",null);
+        map.put("digest",null);
+        map.put("resource",null);
         query.setAttrs(map);
         iq.setQuery(query);
         String s1 = XMPPSerialize.serialize(iq);

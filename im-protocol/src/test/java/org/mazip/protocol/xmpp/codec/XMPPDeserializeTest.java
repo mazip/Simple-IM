@@ -24,7 +24,7 @@ public class XMPPDeserializeTest {
 //        Assert.assertEquals(stream.getVersion(),"1.0");
 //        Assert.assertEquals(stream.getLang(),"en");
 
-        XMPPDeserialize.desrialize("</stream:stream>");
+        //XMPPDeserialize.desrialize("</stream:stream>");
 
 
     }

@@ -1,16 +1,15 @@
 package org.mazip.protocol.xmpp;
 
+import org.mazip.protocol.xmpp.annotation.StartTag;
+import org.mazip.protocol.xmpp.annotation.XMPPChild;
+
 /**
  * Created by mazip on 2016/8/23.
  */
+@StartTag("iq")
 public class Iq extends Packet {
-
-    public static final  String  START_TAG="iq";
-
-    private String type;
-
-    private String id;
-
+    /*子节点 query */
+    @XMPPChild("query")
     private Query query;
 
     public Query getQuery() {
@@ -21,19 +20,4 @@ public class Iq extends Packet {
         this.query = query;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 }

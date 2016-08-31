@@ -1,31 +1,111 @@
 package org.mazip.protocol.xmpp;
 
+import org.mazip.protocol.xmpp.annotation.XMPPATTR;
+
 /**
  * Created by mazip on 2016/8/23.
  */
 public class Packet {
 
-    /** Field description */
-    public static final String CLIENTXMLNS_ATTR = "jabber:client";
 
-    /** Field description */
-    public static final String FROM_ATTR = "from";
+    @XMPPATTR("from")
+    private String from;
+    @XMPPATTR("to")
+    private String to;
+    @XMPPATTR("type")
+    private String type;
+    @XMPPATTR("id")
+    private String id;
+    @XMPPATTR("xmlns:lang")
+    private String lang;
+    @XMPPATTR("jabber:client")
+    private String clientXMLNS;
+    @XMPPATTR("jabber:server")
+    private String serverXMLNS;
+    @XMPPATTR("xmlns")
+    private String XMLNS;
+    @XMPPATTR("perm")
+    private String perm;
+    @XMPPATTR("pr")
+    private String priority;
 
-    /** Field description */
-    public static final String ID_ATTR = "id";
+    public String getFrom() {
+        return from;
+    }
 
-    /** Field description */
-    public static final String PERM_ATTR = "perm";
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
-    /** Field description */
-    public static final String PRIORITY_ATTR = "pr";
+    public String getTo() {
+        return to;
+    }
 
-    /** Field description */
-    public static final String TO_ATTR = "to";
+    public void setTo(String to) {
+        this.to = to;
+    }
 
-    /** Field description */
-    public static final String TYPE_ATTR = "type";
+    public String getType() {
+        return type;
+    }
 
-    /** Field description */
-    public static final String XMLNS_ATTR = "xmlns";
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+
+    public String getClientXMLNS() {
+        return clientXMLNS;
+    }
+
+    public void setClientXMLNS(String clientXMLNS) {
+        this.clientXMLNS = clientXMLNS;
+    }
+
+    public String getServerXMLNS() {
+        return serverXMLNS;
+    }
+
+    public void setServerXMLNS(String serverXMLNS) {
+        this.serverXMLNS = serverXMLNS;
+    }
+
+    public String getXMLNS() {
+        return XMLNS;
+    }
+
+    public void setXMLNS(String XMLNS) {
+        this.XMLNS = XMLNS;
+    }
+
+    public String getPerm() {
+        return perm;
+    }
+
+    public void setPerm(String perm) {
+        this.perm = perm;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
 }

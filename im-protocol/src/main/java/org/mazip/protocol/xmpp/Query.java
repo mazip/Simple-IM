@@ -1,17 +1,21 @@
 package org.mazip.protocol.xmpp;
 
+import org.mazip.protocol.xmpp.annotation.StartTag;
+import org.mazip.protocol.xmpp.annotation.XMPPATTR;
+import org.mazip.protocol.xmpp.annotation.XMPPChild;
+
 import java.util.Map;
 
 /**
  * Created by mazip on 2016/8/23.
  */
+@StartTag("query")
 public class Query {
 
-    /** Field description */
-    public static final String XMLNS_ATTR = "xmlns";
 
+    @XMPPATTR("xmlns")
     private String xmlns;
-
+    @XMPPChild()
     private Map<String,String> attrs;
 
     public Map<String, String> getAttrs() {
