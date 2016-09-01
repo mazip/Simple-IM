@@ -14,11 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mazip.protocol.xmpp;
+package org.mazip.protocol.xmpp.protocol.stanza;
 
 
-import org.mazip.protocol.xmpp.stanza.IQ;
-import org.mazip.protocol.xmpp.stanza.SimpleIQ;
+import org.mazip.protocol.xmpp.protocol.exception.XMPPError;
 import org.mazip.protocol.xmpp.util.Objects;
 
 public class ErrorIQ extends SimpleIQ {

@@ -1,7 +1,5 @@
 package org.mazip.protocol.xmpp.parse;
 
-import org.mazip.protocol.xmpp.Iq;
-import org.mazip.protocol.xmpp.Query;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 

@@ -1,6 +1,5 @@
 package org.mazip.protocol.xmpp.parse;
 
-import org.mazip.protocol.xmpp.XMPPStream;
 import org.xmlpull.v1.XmlPullParser;
 
 /**

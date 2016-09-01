@@ -15,13 +15,19 @@
  * limitations under the License.
  */
 
-package org.mazip.protocol.xmpp;
+package org.mazip.protocol.xmpp.protocol.stanza;
+
+
 
 
 import org.jxmpp.jid.Jid;
 import org.jxmpp.jid.impl.JidCreate;
 import org.jxmpp.stringprep.XmppStringprepException;
 import org.jxmpp.util.XmppStringUtils;
+import org.mazip.protocol.xmpp.ExtensionElement;
+import org.mazip.protocol.xmpp.MultiMap;
+import org.mazip.protocol.xmpp.TopLevelStreamElement;
+import org.mazip.protocol.xmpp.protocol.exception.XMPPError;
 import org.mazip.protocol.xmpp.util.PacketUtil;
 import org.mazip.protocol.xmpp.util.XmlStringBuilder;
 

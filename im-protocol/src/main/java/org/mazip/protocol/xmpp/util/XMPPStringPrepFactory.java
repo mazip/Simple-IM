@@ -27,8 +27,6 @@ package org.mazip.protocol.xmpp.util;
 //~--- non-JDK imports --------------------------------------------------------
 
 
-import org.mazip.protocol.xmpp.BareJID;
-import org.mazip.protocol.xmpp.JID;
 import org.mazip.protocol.xmpp.exception.TigaseStringprepException;
 
 import java.util.concurrent.TimeUnit;

@@ -1,8 +1,5 @@
 package org.mazip.protocol.xmpp.codec;
 
-import com.sun.tools.internal.ws.wsdl.document.jaxws.Exception;
-import com.sun.tools.javadoc.Start;
-import org.mazip.protocol.xmpp.Query;
 import org.mazip.protocol.xmpp.annotation.StartTag;
 import org.mazip.protocol.xmpp.annotation.XMPPATTR;
 import org.mazip.protocol.xmpp.annotation.XMPPChild;

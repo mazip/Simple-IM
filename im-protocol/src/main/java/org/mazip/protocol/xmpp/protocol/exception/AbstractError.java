@@ -14,8 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mazip.protocol.xmpp;
+package org.mazip.protocol.xmpp.protocol.exception;
 
+import org.mazip.protocol.xmpp.ExtensionElement;
 import org.mazip.protocol.xmpp.util.PacketUtil;
 import org.mazip.protocol.xmpp.util.XmlStringBuilder;
 

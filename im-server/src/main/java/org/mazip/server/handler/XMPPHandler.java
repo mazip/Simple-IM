@@ -1,20 +1,10 @@
 package org.mazip.server.handler;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
-import org.mazip.protocol.xmpp.Iq;
-import org.mazip.protocol.xmpp.Message;
-import org.mazip.protocol.xmpp.Query;
-import org.mazip.protocol.xmpp.XMPPStream;
-import org.mazip.protocol.xmpp.codec.XMPPDeserialize;
-import org.mazip.protocol.xmpp.codec.XMPPSerialize;
 import org.mazip.server.manager.C2SConnectManager;
 
-import java.lang.reflect.Member;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 

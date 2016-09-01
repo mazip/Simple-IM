@@ -1,14 +1,9 @@
 package org.mazip.protocol.xmpp.parse;
 
-import org.mazip.protocol.xmpp.Iq;
-import org.mazip.protocol.xmpp.Message;
-import org.mazip.protocol.xmpp.Query;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by mazip on 2016/8/29.

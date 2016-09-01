@@ -14,25 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mazip.protocol.xmpp;
+package org.mazip.protocol.xmpp.protocol.stanza;
 
-import org.mazip.protocol.xmpp.stanza.IQ;
+/**
+ * A simple IQ.
+ * <p>
+ * Simple IQs child elements do not contain further attributes besides 'xmlns'. They may contain additional packet
+ * extensions.
+ * </p>
+ */
+public abstract class SimpleIQ extends IQ {
 
-public class EmptyResultIQ extends IQ {
-
-    public EmptyResultIQ() {
-        super(null, null);
-        setType(IQ.Type.result);
-    }
-
-    public EmptyResultIQ(IQ request) {
-        this();
-        initialzeAsResultFor(request);
+    protected SimpleIQ(String childElementName, String childElementNamespace) {
+        super(childElementName, childElementNamespace);
     }
 
     @Override
-    protected IQ.IQChildElementXmlStringBuilder getIQChildElementBuilder(IQChildElementXmlStringBuilder xml) {
-        // Empty result IQs don't have an child elements
-        return null;
+    protected IQChildElementXmlStringBuilder getIQChildElementBuilder(IQChildElementXmlStringBuilder xml) {
+        xml.setEmptyElement();
+        return xml;
     }
+
 }

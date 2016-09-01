@@ -5,7 +5,6 @@ import io.netty.buffer.Unpooled;
 import io.netty.buffer.UnpooledHeapByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageEncoder;
-import org.mazip.protocol.xmpp.Message;
 import org.mazip.protocol.xmpp.codec.XMPPSerialize;
 import org.mazip.server.manager.C2SConnectManager;
 

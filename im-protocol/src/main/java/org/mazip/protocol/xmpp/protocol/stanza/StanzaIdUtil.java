@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mazip.protocol.xmpp;
+package org.mazip.protocol.xmpp.protocol.stanza;
 
 
 import org.mazip.protocol.xmpp.util.StringUtils;
+
 import java.util.concurrent.atomic.AtomicLong;
 
 public class StanzaIdUtil {
