@@ -1,20 +1,10 @@
 package org.mazip.server.handler;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
-import org.mazip.protocol.xmpp.Iq;
-import org.mazip.protocol.xmpp.Message;
-import org.mazip.protocol.xmpp.Query;
-import org.mazip.protocol.xmpp.XMPPStream;
-import org.mazip.protocol.xmpp.codec.XMPPDeserialize;
-import org.mazip.protocol.xmpp.codec.XMPPSerialize;
 import org.mazip.server.manager.C2SConnectManager;
 
-import java.lang.reflect.Member;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,68 +13,68 @@ import java.util.Map;
  */
 public class XMPPHandler extends ChannelHandlerAdapter {
 
-
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-
-        if (msg instanceof XMPPStream) {
-            XMPPStream stream = (XMPPStream) msg;
-            String from = stream.getFrom();
-            String to = stream.getTo();
-            if (from != null) {
-                stream.setFrom(to);
-            }
-            stream.setTo(from);
-            ctx.write(stream);
-        } else if (msg instanceof Iq) {
-            Iq iq = (Iq) msg;
-            if ("get".equals(iq.getType())) {
-                if ("jabber:iq:auth".equals(iq.getQuery().getXmlns())) {
-                    Iq result = new Iq();
-                    result.setId(iq.getId());
-                    result.setType("result");
-                    Query query = new Query();
-                    query.setXmlns("jabber:iq:auth");
-                    Map<String, String> map = new HashMap<String, String>();
-                    map.put("username", "username");
-                    map.put("password", "password");
-                    map.put("digest", "digest");
-                    map.put("resource", "resource");
-                    query.setAttrs(map);
-                    result.setQuery(query);
-                    ctx.write(result);
-                } else if ("jabber:iq:roster".equals(iq.getQuery().getXmlns())) {
-                    Iq result = new Iq();
-                    result.setId(iq.getId());
-                    result.setType("result");
-                    Query query = new Query();
-                    query.setXmlns("jabber:iq:roster");
-                    result.setQuery(query);
-                    ctx.write(result);
-                }
-            } else if ("set".equals(iq.getType())) {
-                if ("jabber:iq:auth".equals(iq.getQuery().getXmlns())) {
-                    Iq result = new Iq();
-                    result.setId(iq.getId());
-                    result.setType("result");
-                    String username = iq.getQuery().getAttrs().get("username").toString();
-                    C2SConnectManager.addConnection(username, ctx);
-                    ctx.attr(AttributeKey.newInstance(ctx.channel().id()+"_username")).set(username);
-                    ctx.write(result);
-                }
-            }
-        } else if (msg instanceof Message) {
-            Message message = (Message) msg;
-            if("chat".equals(message.getType())){
-                Message messageTo =new Message();
-                messageTo.setType("chat");
-                messageTo.setFrom(ctx.attr(AttributeKey.valueOf(ctx.channel().id()+"_username")).get().toString());
-                messageTo.setTo(message.getTo());
-                messageTo.setBody(message.getBody());
-                ctx.write(messageTo);
-            }
-
-        }
+//
+//    @Override
+//    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+//
+//        if (msg instanceof XMPPStream) {
+//            XMPPStream stream = (XMPPStream) msg;
+//            String from = stream.getFrom();
+//            String to = stream.getTo();
+//            if (from != null) {
+//                stream.setFrom(to);
+//            }
+//            stream.setTo(from);
+//            ctx.write(stream);
+//        } else if (msg instanceof Iq) {
+//            Iq iq = (Iq) msg;
+//            if ("get".equals(iq.getType())) {
+//                if ("jabber:iq:auth".equals(iq.getQuery().getXmlns())) {
+//                    Iq result = new Iq();
+//                    result.setId(iq.getId());
+//                    result.setType("result");
+//                    Query query = new Query();
+//                    query.setXmlns("jabber:iq:auth");
+//                    Map<String, String> map = new HashMap<String, String>();
+//                    map.put("username", "username");
+//                    map.put("password", "password");
+//                    map.put("digest", "digest");
+//                    map.put("resource", "resource");
+//                    query.setAttrs(map);
+//                    result.setQuery(query);
+//                    ctx.write(result);
+//                } else if ("jabber:iq:roster".equals(iq.getQuery().getXmlns())) {
+//                    Iq result = new Iq();
+//                    result.setId(iq.getId());
+//                    result.setType("result");
+//                    Query query = new Query();
+//                    query.setXmlns("jabber:iq:roster");
+//                    result.setQuery(query);
+//                    ctx.write(result);
+//                }
+//            } else if ("set".equals(iq.getType())) {
+//                if ("jabber:iq:auth".equals(iq.getQuery().getXmlns())) {
+//                    Iq result = new Iq();
+//                    result.setId(iq.getId());
+//                    result.setType("result");
+//                    String username = iq.getQuery().getAttrs().get("username").toString();
+//                    C2SConnectManager.addConnection(username, ctx);
+//                    ctx.attr(AttributeKey.newInstance(ctx.channel().id()+"_username")).set(username);
+//                    ctx.write(result);
+//                }
+//            }
+//        } else if (msg instanceof Message) {
+//            Message message = (Message) msg;
+//            if("chat".equals(message.getType())){
+//                Message messageTo =new Message();
+//                messageTo.setType("chat");
+//                messageTo.setFrom(ctx.attr(AttributeKey.valueOf(ctx.channel().id()+"_username")).get().toString());
+//                messageTo.setTo(message.getTo());
+//                messageTo.setBody(message.getBody());
+//                ctx.write(messageTo);
+//            }
+//
+//        }
 
 
 //        System.out.println("id:" + ctx.channel().id());
@@ -179,7 +169,7 @@ public class XMPPHandler extends ChannelHandlerAdapter {
 //            }
 //
 //        }
-    }
+    //}
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {

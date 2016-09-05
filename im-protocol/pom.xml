@@ -34,11 +34,10 @@
         </dependency>
         <!-- xmpp -->
         <dependency>
-            <groupId>org.jxmpp</groupId>
-            <artifactId>jxmpp-jid</artifactId>
-            <version>0.5.0-alpha7</version>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-core</artifactId>
+            <version>4.2.0-beta3</version>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

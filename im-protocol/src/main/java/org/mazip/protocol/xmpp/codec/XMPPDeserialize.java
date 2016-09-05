@@ -1,5 +1,6 @@
 package org.mazip.protocol.xmpp.codec;
 
+import org.jivesoftware.smack.util.MultiMap;
 import org.mazip.protocol.xmpp.*;
 import org.mazip.protocol.xmpp.parse.ParseContext;
 import org.xmlpull.v1.XmlPullParser;
@@ -30,23 +31,20 @@ public class XMPPDeserialize {
      * 反序列化
      *
      * @param str
-     * @param <T>
-     * @return
+     * @return MultiMap
      */
-    public static <T> T deserialize(String str) {
+    public static MultiMap deserialize(String str) {
 
         try {
             XmlPullParserFactory pullParserFactory = XmlPullParserFactory.newInstance();
-            //获取XmlPullParser的实例
             XmlPullParser xmlPullParser = pullParserFactory.newPullParser();
-            //设置输入流  xml文件
             InputStream is = new ByteArrayInputStream(str.getBytes("UTF-8"));
             xmlPullParser.setInput(is, "UTF-8");
             int eventType = xmlPullParser.getEventType();
             while(eventType!=XmlPullParser.END_DOCUMENT){
                 if(eventType==XmlPullParser.START_TAG){
                     String nodeName = xmlPullParser.getName();
-                    return (T) ParseContext.doParse(xmlPullParser, nodeName);
+                    return ParseContext.doParse(xmlPullParser, nodeName);
                 }else{
                    eventType = xmlPullParser.next();
                 }

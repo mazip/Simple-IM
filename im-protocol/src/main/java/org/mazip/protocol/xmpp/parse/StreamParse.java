@@ -1,7 +1,11 @@
 package org.mazip.protocol.xmpp.parse;
 
-import org.mazip.protocol.xmpp.XMPPStream;
+import org.jivesoftware.smack.packet.StreamOpen;
+import org.mazip.protocol.xmpp.util.XParseUtils;
 import org.xmlpull.v1.XmlPullParser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mazip on 2016/8/29.
@@ -9,15 +13,14 @@ import org.xmlpull.v1.XmlPullParser;
 public class StreamParse extends DefaultParse {
 
     @Override
-    public XMPPStream parse(XmlPullParser xmlPullParser) {
-        XMPPStream xmppStream = new XMPPStream();
-        xmppStream.setFrom(xmlPullParser.getAttributeValue(null,XMPPStream.FROM_ATTR));
-        xmppStream.setTo(xmlPullParser.getAttributeValue(null,XMPPStream.TO_ATTR));
-        xmppStream.setId(xmlPullParser.getAttributeValue(null,XMPPStream.ID_ATTR));
-        xmppStream.setLang(xmlPullParser.getAttributeValue(null,XMPPStream.LANG_ATTR));
-        xmppStream.setVersion(xmlPullParser.getAttributeValue(null,XMPPStream.VERSION_ATTR));
-        xmppStream.setXmlns(xmlPullParser.getAttributeValue(null,XMPPStream.XMLNS_ATTR));
-        xmppStream.setXmlnsStream(xmlPullParser.getAttributeValue(null,XMPPStream.XMLNSSTREAM_ATTR));
-        return xmppStream;
+    public List parse(XmlPullParser xmlPullParser) {
+        List list= new ArrayList();
+        String to = XParseUtils.getStringAttribute(xmlPullParser, "to");
+        String from = XParseUtils.getStringAttribute(xmlPullParser, "from");
+        String id = XParseUtils.getStringAttribute(xmlPullParser, "id");
+        String lang = XParseUtils.getStringAttribute(xmlPullParser, "xmlns:lang");
+        StreamOpen xmppStream = new StreamOpen(to, from, id, lang, StreamOpen.StreamContentNamespace.client);
+        list.add(xmppStream);
+        return list;
     }
 }

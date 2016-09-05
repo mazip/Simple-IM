@@ -1,8 +1,6 @@
 package org.mazip.protocol.xmpp.codec;
 
-import org.junit.Assert;
 import org.junit.Test;
-import org.mazip.protocol.xmpp.XMPPStream;
 
 /**
  * Created by mazip on 2016/8/23.

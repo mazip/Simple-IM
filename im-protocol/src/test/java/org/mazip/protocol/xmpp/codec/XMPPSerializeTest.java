@@ -1,9 +1,6 @@
 package org.mazip.protocol.xmpp.codec;
 
 import org.junit.Test;
-import org.mazip.protocol.xmpp.Iq;
-import org.mazip.protocol.xmpp.Query;
-import org.mazip.protocol.xmpp.XMPPStream;
 
 import java.util.HashMap;
 import java.util.Map;
